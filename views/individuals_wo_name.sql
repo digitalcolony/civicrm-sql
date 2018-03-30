@@ -1,0 +1,60 @@
+CREATE VIEW `individuals_wo_name` AS
+    SELECT 
+        `civicrm_contact`.`nick_name` AS `nick_name`,
+        `civicrm_contact`.`legal_name` AS `legal_name`,
+        `civicrm_contact`.`contact_type` AS `contact_type`,
+        `civicrm_contact`.`do_not_email` AS `do_not_email`,
+        `civicrm_contact`.`do_not_phone` AS `do_not_phone`,
+        `civicrm_contact`.`do_not_mail` AS `do_not_mail`,
+        `civicrm_contact`.`do_not_sms` AS `do_not_sms`,
+        `civicrm_contact`.`contact_sub_type` AS `contact_sub_type`,
+        `civicrm_contact`.`legal_identifier` AS `legal_identifier`,
+        `civicrm_contact`.`external_identifier` AS `external_identifier`,
+        `civicrm_contact`.`sort_name` AS `sort_name`,
+        `civicrm_contact`.`display_name` AS `display_name`,
+        `civicrm_contact`.`image_URL` AS `image_URL`,
+        `civicrm_contact`.`preferred_communication_method` AS `preferred_communication_method`,
+        `civicrm_contact`.`preferred_mail_format` AS `preferred_mail_format`,
+        `civicrm_contact`.`do_not_trade` AS `do_not_trade`,
+        `civicrm_contact`.`hash` AS `hash`,
+        `civicrm_contact`.`is_opt_out` AS `is_opt_out`,
+        `civicrm_contact`.`id` AS `id`,
+        `civicrm_contact`.`source` AS `source`,
+        `civicrm_contact`.`first_name` AS `first_name`,
+        `civicrm_contact`.`middle_name` AS `middle_name`,
+        `civicrm_contact`.`last_name` AS `last_name`,
+        `civicrm_contact`.`prefix_id` AS `prefix_id`,
+        `civicrm_contact`.`suffix_id` AS `suffix_id`,
+        `civicrm_contact`.`email_greeting_id` AS `email_greeting_id`,
+        `civicrm_contact`.`email_greeting_custom` AS `email_greeting_custom`,
+        `civicrm_contact`.`email_greeting_display` AS `email_greeting_display`,
+        `civicrm_contact`.`postal_greeting_id` AS `postal_greeting_id`,
+        `civicrm_contact`.`postal_greeting_custom` AS `postal_greeting_custom`,
+        `civicrm_contact`.`postal_greeting_display` AS `postal_greeting_display`,
+        `civicrm_contact`.`addressee_id` AS `addressee_id`,
+        `civicrm_contact`.`addressee_custom` AS `addressee_custom`,
+        `civicrm_contact`.`addressee_display` AS `addressee_display`,
+        `civicrm_contact`.`job_title` AS `job_title`,
+        `civicrm_contact`.`gender_id` AS `gender_id`,
+        `civicrm_contact`.`birth_date` AS `birth_date`,
+        `civicrm_contact`.`is_deceased` AS `is_deceased`,
+        `civicrm_contact`.`deceased_date` AS `deceased_date`,
+        `civicrm_contact`.`household_name` AS `household_name`,
+        `civicrm_contact`.`primary_contact_id` AS `primary_contact_id`,
+        `civicrm_contact`.`organization_name` AS `organization_name`,
+        `civicrm_contact`.`sic_code` AS `sic_code`,
+        `civicrm_contact`.`user_unique_id` AS `user_unique_id`,
+        `civicrm_contact`.`employer_id` AS `employer_id`,
+        `civicrm_contact`.`api_key` AS `api_key`,
+        `civicrm_contact`.`is_deleted` AS `is_deleted`,
+        `civicrm_contact`.`preferred_language` AS `preferred_language`,
+        `civicrm_contact`.`created_date` AS `created_date`,
+        `civicrm_contact`.`modified_date` AS `modified_date`
+    FROM
+        `civicrm_contact`
+    WHERE
+        ((ISNULL(`civicrm_contact`.`first_name`)
+            OR (CHAR_LENGTH(`civicrm_contact`.`first_name`) = 0))
+            AND (ISNULL(`civicrm_contact`.`last_name`)
+            OR (CHAR_LENGTH(`civicrm_contact`.`last_name`) = 0))
+            AND (`civicrm_contact`.`contact_type` = 'Individual'))
